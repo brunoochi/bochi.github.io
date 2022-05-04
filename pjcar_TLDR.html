@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Bruno Ochi | Data Analytics</title>
+</head>
+
+<body>
+  <div id="navbar">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#">Resume</a></li>
+      <li><a href="https://www.linkedin.com/in/brunoochi/" target="blank">Linkedin</a></li>
+      <li><a href="https://github.com/brunoochi" target="blank">Github</a></li>
+    </ul>
+  </div>
+  <div class="project-content">
+    <h1>Project Car</h1>
+    <hr>
+    <p>The goal of this project was practice a couple of common machine learning techniques. I test the linear regression, the decision tree, and the random forest estimators against a dataset of second hand cars. I use features such as "kilometers driven", "engine size", "number of seats", and "price of new model"to predict used car price. The dataset was prepared and shared by an user in Kaggle and it was almost ready for analysis (I did a couple of changes and some feature engineering). The random forest estimator created the best predictions, followed by the decision tree, and the linear regression. </p>
+    <h2>1. Data</h2>
+    <hr>
+    <p>
+    <ul>
+      <li>Used Car Price Prediction dataset: Downloaded from Kaggle. The data seems to have been collected in India; it is unclear how exactly the author extracted and processed it. Check details <a href="https://www.kaggle.com/datasets/avikasliwal/used-cars-price-prediction" target="_blank">here</a></li>
+    </ul>
+    </p>
+    <h2>2. Tool Specs</h2>
+    <hr>
+    <p>
+    <ul>
+      <li>Python: 3.9 version</li>
+      <li>Libraries: pandas, scikit-learn, and matplotlib</li>
+    </ul>
+    </p>
+    <h2>3. Procedures</h2>
+    <hr>
+    <p><strong>Data Processing: </strong> The data downloaded from Kaggle was already in a decent shape. Main problems that had to be dealt with in this step of the analysis were unnecssary strings for numerical units (ex. "Lakhs", "Crores", "Kmpl") and encoding for categorical features (ex. Manual vs Automatic transmission).   
+    </p>
+
+    <p>
+      <strong>Train the Model:</strong> I test a decision tree, a random forest, and a linear regression against the data. The dataset has 814 observations, so I choose leave-one-out cross validation to maximize sample size for training at the risk of taking longer runtimes. Random forest - which was the model that took the longest to finish - needed about 3 minutes to finish (My PC is fairly high spec). I calculate the average RMSE for each model and compare.
+    </p>  
+    <p>
+    <strong>Results:</strong> the distribution of RMSEs for each model shows that the random forest model created less errors on average.
+    <ul>
+        <li>Avg Decision Tree: 2.3709090909090906</li>
+        <li>Avg Random Forest: 1.7690012285012284</li>
+        <li>Avg Linear Regression: 3.3110580652130244</li>
+    </ul>
+    <p>
+      <strong>Predict New Prices:</strong> the package downloaded from Kaggle had a separate dataset with unknown used car prices that could be used for prediction. I run the same models against the new dataset and store all predictions in a dataframe. Plotting all three sets of predictios and with the known prices from the training dataset I get a visualization like this: 
+      <p><img src="pjcar_finalplot.png" alt="plot of historical and predicted used car prices for decition tree, random forest, and linear regression">  
+      </p>
+    </p>
+
+
+    <h2>5. Conclusion</h2>
+    <hr>
+    <p> 
+        This was a very simple project to refresh and practice common machine learning models. It is usually expected that random forest performs better than decision tree and linear regression and indeed we confirmed that by testing those against the used car dataset. 
+    </p>
+    <p>
+        I used the leave-one-out cross validation method. I could have used a gridsearchCV algorithm to perform cross validation and hyperparameter tuning to get less errors without overfitting.   
+    </p>
+    <p>
+        In Part 2 of the Project Car, I will rerun a linear regression model for inference purposes. In other words, I will deep dive into the statistical logic of getting good model coefficients to understand and interpret how each feature is correlated with the target.
+    </p>
+    <h2>4. Links</h2>
+    <hr>
+    <p>
+    <ul>
+      <li> Check the ipynb notebook <a href="https://nbviewer.org/github/brunoochi/my_data_science_notes/blob/main/PJ_Car/Project_Car_Part1.ipynb" target="_blank">here</a></li>
+    </ul>
+    </p>
+  </div>
+
+
+</body>
+
+</html>
