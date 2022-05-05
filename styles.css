@@ -63,6 +63,14 @@ body {
     .container-projects{
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .text-banner{
+        font-size: 180%;
+        position: relative;
+        margin: 9%;
+        display: inline-block;
+    }
+    
 }
 
 @media (min-width: 960px) {
